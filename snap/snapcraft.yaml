@@ -1,0 +1,28 @@
+name: leops-ros-snap
+version: '0.7'
+summary: ROS Talker/Listener Example
+description: |
+ This example launches a ROS talker and listener.
+ 
+confinement: strict
+base: core20
+grade: stable
+
+architectures:
+  - build-on: arm64
+    run-on: arm64
+
+parts:
+ ros-tutorials:
+   plugin: catkin
+   source: .
+   source-type: local
+   catkin-packages: [roscpp_tutorials]
+   stage-packages:
+       - ros-noetic-roslaunch
+ 
+apps:
+ ros-talker-listener:
+   command: opt/ros/noetic/bin/roslaunch roscpp_tutorials talker_listener.launch
+   plugs: [network, network-bind]
+   extensions: [ros1-noetic]
