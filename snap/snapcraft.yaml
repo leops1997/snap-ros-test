@@ -15,7 +15,7 @@ architectures:
 parts:
  ros-tutorials:
    plugin: catkin
-   source: .
+   source: ./ros_tutorials
    source-type: local
    catkin-packages: [roscpp_tutorials]
    stage-packages:
